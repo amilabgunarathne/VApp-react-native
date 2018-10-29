@@ -19,12 +19,12 @@ class oneScreen extends React.Component {
                     <Button
                         //  onPress={this._onPressButton}
                         title="Create Profile +"
+                        onPress={this.onButtonPress.bind(this)}
                     />
                 </View>
                 <View style={styles.buttonContainer}>
                     <Button
                         title="Maintenance Details"
-                        onPress={this.onButtonPress.bind(this)}
                         color="#841584"
                     />
                 </View>
