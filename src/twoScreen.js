@@ -1,5 +1,5 @@
 import React from "react";
-import {Text, View,Platform,TextInput,TouchableOpacity, StyleSheet,Button} from "react-native";
+import {Text, View,Platform,TextInput,TouchableOpacity, StyleSheet,Button,ScrollView} from "react-native";
 import {createStackNavigator} from 'react-navigation';
 import DatePicker from 'react-native-datepicker'
 //import t from 'tcomb-form-native';
@@ -16,17 +16,50 @@ class twoScreen extends React.Component {
            email: '',
            password: '',
            date:'',
-           date1:''
+           date1:'',
+           date2:'',
+           name:'',
+           number:''
       };
     }
     nextPress() {
+      const {email,password,date,date1, date2,name,number } = this.state;  
       console.log("Working");
       const { navigate } = this.props.navigation;
-      navigate('threeScreen');
-}
+      navigate('threeScreen', { Email: email,Password: password,Date: date,Date1: date1, Date2: date2,Name: name,Number: number });
+//       fetch('https://unconsidered-baths.000webhostapp.com/register.php', {
+//         method: 'POST',
+//         headers: {
+//             'Accept': 'application/json',
+//             'Content-Type': 'application/json',
+//         },
+//         body: JSON.stringify({
+//             email: email,
+//             password: password,
+//             date: date,
+//             date2: date2,
+//             name: name,
+//             number: number
+
+
+//         })
+
+//     }).then((response) => response.json())
+//         .then((responseJson) => {
+//             //console.log("Hello");
+
+//             // If server response message same as Data Matched
+               
+
+//         }).catch((error) => {
+//        ;
+//         });
+ }
+
 
     render() {
        return (
+        
     <View style={styles.bGround}>
     <View style={styles.regform}>
 
@@ -34,7 +67,7 @@ class twoScreen extends React.Component {
 
       <TextInput
       style={styles.textinput}
-      placeholder="Your Email"
+      placeholder="Enter user name  "
       underlineColorAndroid={'Transparent'}
       onChangeText={email => this.setState({ email })}
       value={this.state.email}
@@ -73,6 +106,7 @@ class twoScreen extends React.Component {
   maxDate="2020-06-01"
   confirmBtnText="Confirm"
   cancelBtnText="Cancel"
+  
   customStyles={{
     dateIcon: {
       position: 'absolute',
@@ -145,6 +179,7 @@ onDateChange={(date) => {this.setState({date2: date})}}
 
 </View>
     </View>
+  
         );
     }
 }
@@ -177,7 +212,8 @@ paddingLeft: 60,
 paddingRight: 60,
 justifyContent: 'center',
 backgroundColor: '#36485f'
-}});
+}
+});
 
 
 export default twoScreen;
